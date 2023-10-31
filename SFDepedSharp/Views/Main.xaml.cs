@@ -1,0 +1,59 @@
+﻿using MahApps.Metro.Controls;
+using Prism.Regions;
+using SFDepedSharp.ViewModels;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+
+namespace SFDepedSharp.Views
+{
+    /// <summary>
+    /// Interaction logic for MainWindow.xaml
+    /// </summary>
+    public partial class Main
+    {
+        private IRegionManager _regionManager;
+
+        public Main(IRegionManager regionManager)
+        {
+            InitializeComponent();
+
+            _regionManager = regionManager;
+
+
+            Loaded += (s, e) =>
+            {
+                RegionManager.SetRegionManager(ContentRegion, regionManager);
+                RegionManager.SetRegionName(ContentRegion, "ContentRegion");
+
+                _regionManager.RequestNavigate("ContentRegion", "Students");
+                HamburgerMenu.SelectedItem = HamburgerMenu.Items.OfType<NavMenuItem>()
+                    .FirstOrDefault(x => x.NavigationPath == "Students");
+
+
+                HamburgerMenu.ItemInvoked += HamburgerMenu_ItemInvoked;
+            };
+
+        }
+
+        private void HamburgerMenu_ItemInvoked(object sender, HamburgerMenuItemInvokedEventArgs args)
+        {
+            var item = args.InvokedItem as NavMenuItem;
+            if (item != null)
+            {
+                _regionManager.RequestNavigate("ContentRegion", item.NavigationPath);
+            }
+        }
+    }
+}

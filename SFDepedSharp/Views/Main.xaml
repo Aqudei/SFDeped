@@ -1,0 +1,44 @@
+﻿<mah:MetroWindow  xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+                  x:Class="SFDepedSharp.Views.Main"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SFDepedSharp"
+        mc:Ignorable="d"
+        Title="{Binding Title}" Height="600" Width="800"
+                  WindowState="Maximized">
+    <mah:MetroWindow.Resources>
+        <DataTemplate x:Key="MenuItemTemplate">
+            <Grid Height="48">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="{Binding RelativeSource={RelativeSource AncestorType={x:Type mah:HamburgerMenu}}, Path=CompactPaneLength, Mode=OneWay}" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <ContentControl Grid.Column="0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Content="{Binding Icon}"
+                    Focusable="False" />
+                <TextBlock Grid.Column="1"
+               VerticalAlignment="Center"
+               FontSize="16"
+               Text="{Binding Label}" />
+            </Grid>
+        </DataTemplate>
+    </mah:MetroWindow.Resources>
+    <Grid>
+        <mah:HamburgerMenu x:Name="HamburgerMenu"
+                   ItemsSource="{Binding MenuItems}"
+                   IsPaneOpen="True"
+                   ItemTemplate="{StaticResource MenuItemTemplate}"
+                   OptionsItemsSource="{Binding OptionMenuItems}"
+                   OptionsItemTemplate="{StaticResource MenuItemTemplate}">
+            <mah:HamburgerMenu.Content>
+                <Grid Margin="25">
+                    <mah:TransitioningContentControl x:Name="ContentRegion"/>
+                </Grid>
+            </mah:HamburgerMenu.Content>
+        </mah:HamburgerMenu>
+    </Grid>
+</mah:MetroWindow>
