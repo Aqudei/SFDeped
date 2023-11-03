@@ -7,7 +7,9 @@
         xmlns:local="clr-namespace:SFDepedSharp"
         mc:Ignorable="d"
         Title="{Binding Title}" Height="600" Width="800"
-                  WindowState="Maximized">
+                  WindowState="Maximized"
+                 
+                  >
     <mah:MetroWindow.Resources>
         <DataTemplate x:Key="MenuItemTemplate">
             <Grid Height="48">
