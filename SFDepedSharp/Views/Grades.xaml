@@ -8,5 +8,7 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Label>Grades</Label>
+        <Label>Grades</Label>
+        <Label>Hello</Label>
     </Grid>
 </UserControl>
