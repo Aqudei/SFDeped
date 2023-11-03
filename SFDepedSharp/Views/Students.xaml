@@ -10,8 +10,16 @@
             
              >
     <Grid>
+        <StackPanel Margin="60 0 10 0">
+            
         <Label>Students</Label>
-        <uc:TextBoxCustom Grid.Column="0" Grid.Row="2" Caption="Legal Name of Business" Hint="Enter your legal name"/>
+        <uc:TextBoxCustom Grid.Column="0" Grid.Row="2" Caption="Learner Reference Number" Hint="Enter learner reference number"/>
+        <uc:TextBoxCustom Grid.Column="0" Grid.Row="2" Caption="Last Name" Hint="Enter last name"/>
+        <uc:TextBoxCustom Grid.Column="0" Grid.Row="2" Caption="Middle Name" Hint="Enter middle name"/>
+        <uc:TextBoxCustom Grid.Column="0" Grid.Row="2" Caption="Complete Name" Hint="Enter complete name"/>
+        <uc:TextBoxCustom Grid.Column="0" Grid.Row="2" Caption="Date of admision" Hint="Enter date of admision"/>
+        <uc:TextBoxCustom Grid.Column="0" Grid.Row="2" Caption="Name of School" Hint="Enter name of school"/>
+        </StackPanel>
         
     </Grid>
 </UserControl>
